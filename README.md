@@ -11,11 +11,11 @@ npm install
 ## Run
 
 ```bash
-npx ts-node src/index.ts
+npm run dev
 ```
 
 ## Test
 
 ```bash
-npx jest
+npm test
 ```
