@@ -1,5 +1,6 @@
 import { Employee } from '../models/Employee';
 import { Day } from '../types';
+import { expect, describe, it } from '@jest/globals';
 
 const makeEmployee = (unavailableDays: Day[] = []): Employee =>
   new Employee('emp_001', 'Alice', 'certified', unavailableDays);

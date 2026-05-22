@@ -1,4 +1,4 @@
-import { expect } from '@jest/globals';
+import { expect, describe, it } from '@jest/globals';
 import { selectCrew } from '../services/crewSelector';
 import { Employee } from '../models/Employee';
 import { CrewRequirement } from '../types';

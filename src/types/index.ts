@@ -1,13 +1,12 @@
-export type Day = 'monday' | 'tuesday' | 'wednesday' | 'thursday' | 'friday';
+export const DAYS = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'] as const;
+export type Day = typeof DAYS[number];
 
-export const DAYS: readonly Day[] = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'];
+export const EMPLOYEE_TYPES = ['certified', 'pending', 'laborer'] as const;
+export type EmployeeType = typeof EMPLOYEE_TYPES[number];
 
-export type EmployeeType = 'certified' | 'pending' | 'laborer';
+export const BUILDING_TYPES = ['single_story', 'two_story', 'commercial'] as const;
+export type BuildingType = typeof BUILDING_TYPES[number];
 
-export type BuildingType = 'single_story' | 'two_story' | 'commercial';
-
-// DECISION: flat counts rather than per-role arrays — the scheduler only needs
-// how many of each role are required, not their identities at requirement-definition time.
 export interface CrewRequirement {
   readonly certified: number;
   readonly pending: number;
@@ -16,12 +15,13 @@ export interface CrewRequirement {
 
 export interface Assignment {
   readonly buildingId: string;
-  readonly employeeIds: string[];
+  readonly employeeIds:  readonly string[];
 }
 
 export interface DaySchedule {
   readonly day: Day;
   readonly assignments: Assignment[];
+  readonly unscheduled: string[];
 }
 
 export interface Schedule {

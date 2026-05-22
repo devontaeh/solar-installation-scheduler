@@ -150,3 +150,6 @@ describe('Scheduler.generateSchedule', () => {
     expect(allAssigned).not.toContain('b1');
   });
 });
+
+
+

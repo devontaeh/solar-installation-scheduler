@@ -1,4 +1,4 @@
-import { expect } from '@jest/globals';
+import { expect, describe, it } from '@jest/globals';
 import { ScheduleFormatter } from '../services/ScheduleFormatter';
 import { Employee } from '../models/Employee';
 import { Building } from '../models/Building';
@@ -9,11 +9,11 @@ const building = new Building('b1', 'Casa Nova', 'single_story');
 
 const makeSchedule = (overrides: Partial<Schedule['days'][0]> = {}): Schedule => ({
   days: [
-    { day: 'monday', assignments: [], ...overrides },
-    { day: 'tuesday', assignments: [] },
-    { day: 'wednesday', assignments: [] },
-    { day: 'thursday', assignments: [] },
-    { day: 'friday', assignments: [] },
+    { day: 'monday', assignments: [], unscheduled: [], ...overrides },
+    { day: 'tuesday', assignments: [], unscheduled: [] },
+    { day: 'wednesday', assignments: [], unscheduled: [] },
+    { day: 'thursday', assignments: [], unscheduled: [] },
+    { day: 'friday', assignments: [], unscheduled: [] },
   ],
 });
 
@@ -36,7 +36,7 @@ describe('ScheduleFormatter.format', () => {
     expect(output).toContain('Casa Nova');
   });
 
-  it('shows (no work scheduled) for a day with no assignments', () => {
+  it('shows (no work scheduled) for a day with no assignments and no unscheduled', () => {
     const formatter = new ScheduleFormatter([], []);
     const schedule = makeSchedule();
     const output = formatter.format(schedule);

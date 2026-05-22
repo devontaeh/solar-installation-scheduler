@@ -23,8 +23,4 @@ export class EmployeePool {
     }
     this.assignedByDay.get(day)!.add(employeeId);
   }
-
-  reset(day: Day): void {
-    this.assignedByDay.delete(day);
-  }
 }

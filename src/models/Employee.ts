@@ -4,7 +4,7 @@ export class Employee {
   readonly id: string;
   readonly name: string;
   readonly type: EmployeeType;
-  readonly unavailableDays: Day[];
+  readonly unavailableDays:  readonly Day[];
 
   constructor(id: string, name: string, type: EmployeeType, unavailableDays: Day[] = []) {
     this.id = id;

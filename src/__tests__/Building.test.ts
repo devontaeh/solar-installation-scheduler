@@ -1,4 +1,4 @@
-import { expect } from '@jest/globals';
+import { expect,  describe, it } from '@jest/globals';
 import { Building } from '../models/Building';
 
 describe('Building.getRequirements', () => {

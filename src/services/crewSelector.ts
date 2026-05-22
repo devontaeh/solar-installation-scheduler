@@ -1,9 +1,6 @@
 import { Employee } from '../models/Employee';
 import { CrewRequirement } from '../types';
 
-// DECISION: greedy fill — certified first, then pending, then anyType.
-// A certified installer may fill an anyType slot, potentially starving a later
-// building. Per prompt ("simple in-order scheduling"), this is acceptable.
 export function selectCrew(available: Employee[], req: CrewRequirement): Employee[] | null {
   const certified = available.filter((e) => e.type === 'certified');
   if (certified.length < req.certified) return null;

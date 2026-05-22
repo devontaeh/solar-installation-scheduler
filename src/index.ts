@@ -3,10 +3,6 @@ import { Building } from './models/Building';
 import { Scheduler } from './services/Scheduler';
 import { ScheduleFormatter } from './services/ScheduleFormatter';
 
-// DECISION: hardcoded demo over CLI args — prompt asks for proof of correctness,
-// not a user-facing tool. Dataset is designed to exercise deferral, unavailability,
-// and all three building types.
-
 const employees: Employee[] = [
   new Employee('e1', 'Alice Carter',   'certified', []),
   new Employee('e2', 'Ben Torres',     'certified', ['monday']),
@@ -29,11 +25,6 @@ const buildings: Building[] = [
   new Building('b5', 'Sunset Single-Story Home',   'single_story'),
   new Building('b6', 'Hillcrest Two-Story Home',   'two_story'),
 ];
-
-// FUTURE: buildings that require multiple days (not in prompt scope)
-// FUTURE: employee overtime / max hours per week
-// FUTURE: crew preferences or skill matching beyond role type
-// FUTURE: real date-based unavailability (not just day-of-week)
 
 const scheduler = new Scheduler(buildings, employees);
 const schedule = scheduler.generateSchedule();
