@@ -6,7 +6,6 @@
 - Zero-crew requirement — building would be marked scheduled with empty crew
 
 ## Improvements
-- Replace Array.includes with Set<string> lookups in crew selection — O(1) vs O(n)
 - Real date-based unavailability rather than day-of-week strings
 - Buildings requiring multiple days of work
 - Employee overtime / max hours per week cap

@@ -6,12 +6,14 @@ export function selectCrew(available: Employee[], req: CrewRequirement): Employe
   if (certified.length < req.certified) return null;
   const selectedCertified = certified.slice(0, req.certified);
 
-  const remaining = available.filter((e) => !selectedCertified.includes(e));
+  const selectedCertifiedIds = new Set(selectedCertified.map((e) => e.id));
+  const remaining = available.filter((e) => !selectedCertifiedIds.has(e.id));
   const pending = remaining.filter((e) => e.type === 'pending');
   if (pending.length < req.pending) return null;
   const selectedPending = pending.slice(0, req.pending);
 
-  const remainingAfterPending = remaining.filter((e) => !selectedPending.includes(e));
+  const selectedPendingIds = new Set(selectedPending.map((e) => e.id));
+  const remainingAfterPending = remaining.filter((e) => !selectedPendingIds.has(e.id));
   if (remainingAfterPending.length < req.anyType) return null;
   const selectedAny = remainingAfterPending.slice(0, req.anyType);
 
