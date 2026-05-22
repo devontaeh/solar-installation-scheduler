@@ -21,7 +21,6 @@ export class Scheduler {
     for (const day of DAYS) {
       pool.reset(day);
       const assignments: Assignment[] = [];
-      const unscheduled: string[] = [];
 
       for (const building of this.buildings) {
         if (scheduledBuildingIds.has(building.id)) continue;
@@ -33,12 +32,10 @@ export class Scheduler {
           crew.forEach((e) => pool.assign(e.id, day));
           assignments.push({ buildingId: building.id, employeeIds: crew.map((e) => e.id) });
           scheduledBuildingIds.add(building.id);
-        } else {
-          unscheduled.push(building.id);
         }
       }
 
-      days.push({ day, assignments, unscheduled });
+      days.push({ day, assignments });
     }
 
     return { days };

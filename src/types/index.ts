@@ -22,7 +22,6 @@ export interface Assignment {
 export interface DaySchedule {
   readonly day: Day;
   readonly assignments: Assignment[];
-  readonly unscheduled: string[];
 }
 
 export interface Schedule {
